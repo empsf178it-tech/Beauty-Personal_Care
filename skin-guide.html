@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMÉA | Skin Guide & Editorial Education</title>
+  <meta name="description" content="Editorial guides on skin barrier integrity, product layering science, hydration principles, and sensitive skin care.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="lumea-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-logo" aria-label="LUMÉA Skincare">
+        <span class="logo-icon-wrapper">
+          <svg class="logo-drop-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.5C12 2.5 5.5 11 5.5 15.5C5.5 19.09 8.41 22 12 22C15.59 22 18.5 19.09 18.5 15.5C18.5 11 12 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 22V13C12 11.5 13.5 10 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">LUMÉA<span class="logo-dot">.</span></span>
+      </a>
+      <ul class="nav-links-desktop">
+        <li><a href="index.html" class="nav-link-item">Home</a></li>
+        <li><a href="products.html" class="nav-link-item">Shop</a></li>
+        <li><a href="routine.html" class="nav-link-item">Routine</a></li>
+        <li><a href="ingredients.html" class="nav-link-item">Ingredients</a></li>
+        <li><a href="skin-guide.html" class="nav-link-item active">Skin Guide</a></li>
+        <li><a href="about.html" class="nav-link-item">About</a></li>
+      </ul>
+      <div class="nav-actions-right">
+        <button class="btn-lumea-icon trigger-search" aria-label="Search skincare"><i class="bi bi-search"></i></button>
+        <a href="dashboard.html" class="btn-lumea-icon position-relative" aria-label="Favorites">
+          <i class="bi bi-heart"></i>
+          <span id="favorites-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none; font-size: 0.65rem;">0</span>
+        </a>
+        <a href="login.html" class="btn-lumea-icon"><i class="bi bi-person"></i></a>
+        <a href="routine.html" class="btn-lumea btn-lumea-primary btn-lumea-sm">Find Your Routine</a>
+      </div>
+      <button class="mobile-hamburger" id="mobile-menu-toggle" aria-label="Toggle menu">
+        <div class="hamburger-box">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <button class="close-mobile-menu-btn" id="close-mobile-menu" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Shop</a></li>
+      <li><a href="routine.html">Routine</a></li>
+      <li><a href="ingredients.html">Ingredients</a></li>
+      <li><a href="skin-guide.html" class="active">Skin Guide</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="mobile-nav-actions">
+      <a href="routine.html" class="btn-lumea btn-lumea-terracotta w-100 text-center">Find Your Routine</a>
+      <div class="d-flex gap-3 justify-content-center mt-2">
+        <button class="btn-lumea-icon trigger-search" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="dashboard.html" class="btn-lumea-icon" aria-label="Favorites"><i class="bi bi-heart"></i></a>
+        <a href="login.html" class="btn-lumea-icon" aria-label="Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-overlay" id="search-overlay">
+    <button class="close-search-btn" id="close-search">&times;</button>
+    <div class="search-container-inner mt-5">
+      <span class="eyebrow text-center d-block mb-3">Instant Skincare Search</span>
+      <div class="search-input-wrapper">
+        <i class="bi bi-search search-icon-inside"></i>
+        <input type="text" id="global-search-input" class="search-input-field" placeholder="Search serums, ceramides, hydration, SPF...">
+      </div>
+      <div id="search-results-container"></div>
+    </div>
+  </div>
+
+  <main id="skin-guides-grid">
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-banner-inner p-4 p-md-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-7 reveal-on-scroll">
+              <span class="eyebrow"><i class="bi bi-book me-1"></i> Editorial Skincare Journal</span>
+              <h1 class="display-large mb-3">Understand Your Skin.</h1>
+              <p class="lead-text mb-4">Deep dive into science-backed editorial guides explaining skin barrier repair, ingredient layering, and optimal routine building.</p>
+              
+              <div class="filter-pills">
+                <button class="filter-btn active" data-guide-filter="All">All Guides</button>
+                <button class="filter-btn" data-guide-filter="Basics">Basics</button>
+                <button class="filter-btn" data-guide-filter="Barrier">Barrier Care</button>
+                <button class="filter-btn" data-guide-filter="Layering">Layering</button>
+                <button class="filter-btn" data-guide-filter="Protection">Protection</button>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="img-hover-wrapper rounded-4 overflow-hidden shadow-card" style="height: 320px;">
+                <img src="assets/images/73.jpg" alt="LUMÉA Skin Guide Editorial Hero">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUIDES GRID (8 Editorial Articles) -->
+    <section class="bg-surface">
+      <div class="container">
+        <div class="row g-4">
+
+          <!-- Guide 01 -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 skin-guide-card" data-guide-category="Basics">
+              <div class="img-hover-wrapper" style="height: 240px;">
+                <img src="assets/images/74.jpg" alt="How to Build a Simple Skincare Routine article hero">
+              </div>
+              <div class="p-4 d-flex flex-column">
+                <span class="badge-lumea badge-terracotta mb-2 w-auto me-auto">Guide 01 / Basics</span>
+                <h4 class="heading-3 mb-2">How to Build a Simple Skincare Routine</h4>
+                <p class="small text-muted mb-3 flex-grow-1">Learn the essential four steps every skin type needs to maintain moisture balance and protection without overwhelming skin cells.</p>
+                <a href="#" class="link-arrow small fw-semibold" onclick="event.preventDefault(); showToast('Opening Guide 01: Simple Routine...');">Read Editorial Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guide 02 -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 skin-guide-card" data-guide-category="Basics">
+              <div class="img-hover-wrapper" style="height: 240px;">
+                <img src="assets/images/75.jpg" alt="Why Skin Hydration Matters article hero">
+              </div>
+              <div class="p-4 d-flex flex-column">
+                <span class="badge-lumea badge-sage mb-2 w-auto me-auto">Guide 02 / Hydration</span>
+                <h4 class="heading-3 mb-2">Why Skin Hydration Matters</h4>
+                <p class="small text-muted mb-3 flex-grow-1">Discover the difference between dehydrated skin and dry skin, and how hyaluronic acid restores inner cellular volume.</p>
+                <a href="#" class="link-arrow small fw-semibold" onclick="event.preventDefault(); showToast('Opening Guide 02: Skin Hydration...');">Read Editorial Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guide 03 -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 skin-guide-card" data-guide-category="Barrier">
+              <div class="img-hover-wrapper" style="height: 240px;">
+                <img src="assets/images/76.jpg" alt="Understanding the Skin Barrier article hero">
+              </div>
+              <div class="p-4 d-flex flex-column">
+                <span class="badge-lumea badge-beige mb-2 w-auto me-auto">Guide 03 / Barrier</span>
+                <h4 class="heading-3 mb-2">Understanding the Skin Barrier</h4>
+                <p class="small text-muted mb-3 flex-grow-1">The stratum corneum is your body's shield. Learn how lipid ceramides repair micro-tears caused by harsh environmental stressors.</p>
+                <a href="#" class="link-arrow small fw-semibold" onclick="event.preventDefault(); showToast('Opening Guide 03: Skin Barrier...');">Read Editorial Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guide 04 -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 skin-guide-card" data-guide-category="Layering">
+              <div class="img-hover-wrapper" style="height: 240px;">
+                <img src="assets/images/77.jpg" alt="How to Layer Skincare Products article hero">
+              </div>
+              <div class="p-4 d-flex flex-column">
+                <span class="badge-lumea badge-terracotta mb-2 w-auto me-auto">Guide 04 / Layering</span>
+                <h4 class="heading-3 mb-2">How to Layer Skincare Products</h4>
+                <p class="small text-muted mb-3 flex-grow-1">Apply formulas from thinnest to thickest consistency to ensure maximum molecular penetration and active ingredient efficacy.</p>
+                <a href="#" class="link-arrow small fw-semibold" onclick="event.preventDefault(); showToast('Opening Guide 04: Product Layering...');">Read Editorial Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guide 05 -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 skin-guide-card" data-guide-category="Protection">
+              <div class="img-hover-wrapper" style="height: 240px;">
+                <img src="assets/images/1.jpg" alt="What Does SPF Actually Do article hero">
+              </div>
+              <div class="p-4 d-flex flex-column">
+                <span class="badge-lumea badge-sage mb-2 w-auto me-auto">Guide 05 / Protection</span>
+                <h4 class="heading-3 mb-2">What Does SPF Actually Do?</h4>
+                <p class="small text-muted mb-3 flex-grow-1">Uncover the physics of mineral zinc oxide, broad-spectrum UV reflection, and why daily sun protection prevents premature collagen breakdown.</p>
+                <a href="#" class="link-arrow small fw-semibold" onclick="event.preventDefault(); showToast('Opening Guide 05: SPF Protection...');">Read Editorial Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guide 06 -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 skin-guide-card" data-guide-category="Basics">
+              <div class="img-hover-wrapper" style="height: 240px;">
+                <img src="assets/images/2.jpg" alt="Serum vs Moisturizer article hero">
+              </div>
+              <div class="p-4 d-flex flex-column">
+                <span class="badge-lumea badge-beige mb-2 w-auto me-auto">Guide 06 / Basics</span>
+                <h4 class="heading-3 mb-2">Serum vs. Moisturizer</h4>
+                <p class="small text-muted mb-3 flex-grow-1">Serums deliver concentrated bio-active nutrients deep into pores, while moisturizers form a seal to prevent evaporation.</p>
+                <a href="#" class="link-arrow small fw-semibold" onclick="event.preventDefault(); showToast('Opening Guide 06: Serum vs Moisturizer...');">Read Editorial Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guide 07 -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 skin-guide-card" data-guide-category="Layering">
+              <div class="img-hover-wrapper" style="height: 240px;">
+                <img src="assets/images/3.jpg" alt="How to Introduce Retinol article hero">
+              </div>
+              <div class="p-4 d-flex flex-column">
+                <span class="badge-lumea badge-terracotta mb-2 w-auto me-auto">Guide 07 / Actives</span>
+                <h4 class="heading-3 mb-2">How to Introduce Retinol</h4>
+                <p class="small text-muted mb-3 flex-grow-1">Start slow with encapsulated retinol formulas to build cellular tolerance and minimize redness or surface shedding.</p>
+                <a href="#" class="link-arrow small fw-semibold" onclick="event.preventDefault(); showToast('Opening Guide 07: Retinol Intro...');">Read Editorial Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guide 08 -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 skin-guide-card" data-guide-category="Barrier">
+              <div class="img-hover-wrapper" style="height: 240px;">
+                <img src="assets/images/4.jpg" alt="Choosing Products for Sensitive Skin article hero">
+              </div>
+              <div class="p-4 d-flex flex-column">
+                <span class="badge-lumea badge-sage mb-2 w-auto me-auto">Guide 08 / Sensitive</span>
+                <h4 class="heading-3 mb-2">Skincare for Sensitive Skin</h4>
+                <p class="small text-muted mb-3 flex-grow-1">Avoid artificial fragrances, essential oil irritants, and harsh sulfates. Choose fragrance-free, pH-balanced soothing botanicals.</p>
+                <a href="#" class="link-arrow small fw-semibold" onclick="event.preventDefault(); showToast('Opening Guide 08: Sensitive Skin...');">Read Editorial Guide <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="lumea-footer">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+          <a href="index.html" class="brand-logo footer-brand mb-3" aria-label="LUMÉA Skincare Home">
+            <span class="logo-icon-wrapper">
+              <svg class="logo-drop-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.5C12 2.5 5.5 11 5.5 15.5C5.5 19.09 8.41 22 12 22C15.59 22 18.5 19.09 18.5 15.5C18.5 11 12 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 22V13C12 11.5 13.5 10 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="logo-text">LUMÉA<span class="logo-dot">.</span></span>
+          </a>
+          <p class="small text-muted mb-4">Skin, thoughtfully cared for. Ultra-premium skincare engineered around barrier integrity, pure hydration, and clean formulation science.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn-lumea-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn-lumea-icon" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="btn-lumea-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="products.html">Shop Skincare</a></li>
+            <li><a href="routine.html">Routine Builder</a></li>
+            <li><a href="ingredients.html">Ingredients</a></li>
+            <li><a href="skin-guide.html">Skin Guide</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Account</h5>
+          <ul class="footer-links">
+            <li><a href="dashboard.html">My Account</a></li>
+            <li><a href="dashboard.html">Saved Products</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h5 class="footer-title">Join The Ritual</h5>
+          <p class="small text-muted mb-3">Receive skincare notes, routine tips and exclusive product announcements.</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to LUMÉA Skincare Notes!');">
+            <div class="newsletter-input-group">
+              <input type="email" placeholder="Enter your email address..." required>
+              <button type="submit" class="btn-lumea btn-lumea-primary btn-lumea-sm">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary-subtle d-flex flex-column flex-md-row justify-content-between align-items-center small text-muted">
+        <p class="mb-2 mb-md-0">&copy; 2026 LUMÉA Skincare Platform. Demo application.</p>
+        <div class="d-flex gap-4">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Formulation Ethics</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

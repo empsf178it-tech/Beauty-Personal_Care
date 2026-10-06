@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMÉA | Skincare Ingredient Library & Science</title>
+  <meta name="description" content="Explore biocompatible botanical actives, lipid ceramides, and pure bio-fermented ingredients formulated for optimal skin health.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="lumea-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-logo" aria-label="LUMÉA Skincare">
+        <span class="logo-icon-wrapper">
+          <svg class="logo-drop-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.5C12 2.5 5.5 11 5.5 15.5C5.5 19.09 8.41 22 12 22C15.59 22 18.5 19.09 18.5 15.5C18.5 11 12 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 22V13C12 11.5 13.5 10 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">LUMÉA<span class="logo-dot">.</span></span>
+      </a>
+      <ul class="nav-links-desktop">
+        <li><a href="index.html" class="nav-link-item">Home</a></li>
+        <li><a href="products.html" class="nav-link-item">Shop</a></li>
+        <li><a href="routine.html" class="nav-link-item">Routine</a></li>
+        <li><a href="ingredients.html" class="nav-link-item active">Ingredients</a></li>
+        <li><a href="skin-guide.html" class="nav-link-item">Skin Guide</a></li>
+        <li><a href="about.html" class="nav-link-item">About</a></li>
+      </ul>
+      <div class="nav-actions-right">
+        <button class="btn-lumea-icon trigger-search" aria-label="Search skincare"><i class="bi bi-search"></i></button>
+        <a href="dashboard.html" class="btn-lumea-icon position-relative" aria-label="Favorites">
+          <i class="bi bi-heart"></i>
+          <span id="favorites-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none; font-size: 0.65rem;">0</span>
+        </a>
+        <a href="login.html" class="btn-lumea-icon"><i class="bi bi-person"></i></a>
+        <a href="routine.html" class="btn-lumea btn-lumea-primary btn-lumea-sm">Find Your Routine</a>
+      </div>
+      <button class="mobile-hamburger" id="mobile-menu-toggle" aria-label="Toggle menu">
+        <div class="hamburger-box">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <button class="close-mobile-menu-btn" id="close-mobile-menu" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Shop</a></li>
+      <li><a href="routine.html">Routine</a></li>
+      <li><a href="ingredients.html" class="active">Ingredients</a></li>
+      <li><a href="skin-guide.html">Skin Guide</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="mobile-nav-actions">
+      <a href="routine.html" class="btn-lumea btn-lumea-terracotta w-100 text-center">Find Your Routine</a>
+      <div class="d-flex gap-3 justify-content-center mt-2">
+        <button class="btn-lumea-icon trigger-search" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="dashboard.html" class="btn-lumea-icon" aria-label="Favorites"><i class="bi bi-heart"></i></a>
+        <a href="login.html" class="btn-lumea-icon" aria-label="Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-overlay" id="search-overlay">
+    <button class="close-search-btn" id="close-search">&times;</button>
+    <div class="search-container-inner mt-5">
+      <span class="eyebrow text-center d-block mb-3">Instant Skincare Search</span>
+      <div class="search-input-wrapper">
+        <i class="bi bi-search search-icon-inside"></i>
+        <input type="text" id="global-search-input" class="search-input-field" placeholder="Search serums, ceramides, hydration, SPF...">
+      </div>
+      <div id="search-results-container"></div>
+    </div>
+  </div>
+
+  <main id="ingredients-grid">
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-banner-inner p-4 p-md-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-7 reveal-on-scroll">
+              <span class="eyebrow"><i class="bi bi-flower2 me-1"></i> Transparency & Science</span>
+              <h1 class="display-large mb-3">Know What You Put On Your Skin.</h1>
+              <p class="lead-text mb-4">We select biocompatible actives formulated at skin-identical pH levels to support barrier integrity and cellular longevity.</p>
+              
+              <div class="search-input-wrapper max-w-lg mb-0">
+                <i class="bi bi-search search-icon-inside"></i>
+                <input type="text" id="ingredient-search-input" class="form-control-lumea ps-5 py-3 rounded-pill" placeholder="Search ingredient name, benefit, or concern...">
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="img-hover-wrapper rounded-4 overflow-hidden shadow-card" style="height: 320px;">
+                <img src="assets/images/63.jpg" alt="LUMÉA Botanical Ingredients Hero Banner">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INGREDIENTS CARDS GRID -->
+    <section class="bg-surface">
+      <div class="container">
+        <div class="row g-4">
+
+          <!-- 01 Hyaluronic Acid -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/64.jpg" alt="Hyaluronic Acid ingredient botanical source">
+              </div>
+              <span class="badge-lumea badge-terracotta mb-2">Hydration Engine</span>
+              <h3 class="heading-3 mb-2">Hyaluronic Acid</h3>
+              <p class="small text-muted mb-3">Multi-molecular weight humectant that binds up to 1,000 times its weight in water to plump fine lines and restore surface suppleness.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Dryness, Dehydration, Fine Lines
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 Niacinamide -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/65.jpg" alt="Niacinamide Vitamin B3 active source">
+              </div>
+              <span class="badge-lumea badge-sage mb-2">Pore & Tone Balancer</span>
+              <h3 class="heading-3 mb-2">Niacinamide (B3)</h3>
+              <p class="small text-muted mb-3">Versatile B-vitamin that shrinks enlarged pores, regulates sebum synthesis, and diminishes redness and post-acne dark marks.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Oiliness, Uneven Tone, Enlarged Pores
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 Vitamin C -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/66.jpg" alt="Vitamin C L-Ascorbic Acid source">
+              </div>
+              <span class="badge-lumea badge-terracotta mb-2">Radiance Shield</span>
+              <h3 class="heading-3 mb-2">L-Ascorbic Acid (Vit C)</h3>
+              <p class="small text-muted mb-3">Potent antioxidant that neutralizes environmental oxidants, inhibits melanin overproduction, and stimulates collagen synthesis.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Dullness, Hyperpigmentation, Sun Damage
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 Retinol -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/67.jpg" alt="Encapsulated Retinol active compound">
+              </div>
+              <span class="badge-lumea badge-beige mb-2">Cellular Renewal</span>
+              <h3 class="heading-3 mb-2">Encapsulated Retinol</h3>
+              <p class="small text-muted mb-3">Time-released Vitamin A derivative that speeds cellular turnover and smooths deep wrinkles with minimal flaking.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Aging, Loss of Firmness, Rough Texture
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 Ceramides -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/68.jpg" alt="Bio-identical Ceramides lipid matrix">
+              </div>
+              <span class="badge-lumea badge-sage mb-2">Barrier Restorer</span>
+              <h3 class="heading-3 mb-2">Plant Ceramides</h3>
+              <p class="small text-muted mb-3">Bio-identical lipids that form the mortar between skin cells, repairing compromised barriers and preventing moisture evaporation.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Compromised Barrier, Irritation, Eczema-prone
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 Peptides -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/69.jpg" alt="Signal Peptides structural protein">
+              </div>
+              <span class="badge-lumea badge-terracotta mb-2">Firming Signal</span>
+              <h3 class="heading-3 mb-2">Signal Peptides</h3>
+              <p class="small text-muted mb-3">Short amino acid chains that signal skin cells to produce fresh collagen and elastin fibers for enhanced elasticity.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Sagging, Fine Lines, Eye Contour Fatigue
+              </div>
+            </div>
+          </div>
+
+          <!-- 07 Aloe Vera -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/70.jpg" alt="Organic Aloe Vera succulent botanical">
+              </div>
+              <span class="badge-lumea badge-sage mb-2">Soothing Botanical</span>
+              <h3 class="heading-3 mb-2">Organic Aloe Vera</h3>
+              <p class="small text-muted mb-3">Rich in polysaccharide minerals and anti-inflammatory enzymes that cool heat, calm redness, and hydrate fragile skin.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Sunburn, Redness, Sensitivity
+              </div>
+            </div>
+          </div>
+
+          <!-- 08 Green Tea -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/71.jpg" alt="Green Tea Polyphenols extract source">
+              </div>
+              <span class="badge-lumea badge-terracotta mb-2">Polyphenol Defender</span>
+              <h3 class="heading-3 mb-2">Green Tea Extract</h3>
+              <p class="small text-muted mb-3">Packed with EGCG polyphenols that defend skin matrix against UV-induced stress and calm sebum inflammation.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Blemishes, Environmental Stress
+              </div>
+            </div>
+          </div>
+
+          <!-- 09 Squalane -->
+          <div class="col-md-6 col-lg-4 reveal-on-scroll">
+            <div class="lumea-card h-100 p-4 ingredient-card">
+              <div class="img-hover-wrapper rounded-3 mb-3" style="height: 200px;">
+                <img src="assets/images/72.jpg" alt="Sugarcane Squalane lipid emollient">
+              </div>
+              <span class="badge-lumea badge-beige mb-2">Biocompatible Emollient</span>
+              <h3 class="heading-3 mb-2">Plant Squalane</h3>
+              <p class="small text-muted mb-3">Weightless emollient derived from sugarcane that mimics human natural sebum, softening skin without clogging pores.</p>
+              <div class="border-top pt-2 small text-secondary">
+                <strong>Ideal Concern:</strong> Rough Texture, Dehydration
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="lumea-footer">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+          <a href="index.html" class="brand-logo footer-brand mb-3" aria-label="LUMÉA Skincare Home">
+            <span class="logo-icon-wrapper">
+              <svg class="logo-drop-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.5C12 2.5 5.5 11 5.5 15.5C5.5 19.09 8.41 22 12 22C15.59 22 18.5 19.09 18.5 15.5C18.5 11 12 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 22V13C12 11.5 13.5 10 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="logo-text">LUMÉA<span class="logo-dot">.</span></span>
+          </a>
+          <p class="small text-muted mb-4">Skin, thoughtfully cared for. Ultra-premium skincare engineered around barrier integrity, pure hydration, and clean formulation science.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn-lumea-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn-lumea-icon" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="btn-lumea-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="products.html">Shop Skincare</a></li>
+            <li><a href="routine.html">Routine Builder</a></li>
+            <li><a href="ingredients.html">Ingredients</a></li>
+            <li><a href="skin-guide.html">Skin Guide</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Account</h5>
+          <ul class="footer-links">
+            <li><a href="dashboard.html">My Account</a></li>
+            <li><a href="dashboard.html">Saved Products</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h5 class="footer-title">Join The Ritual</h5>
+          <p class="small text-muted mb-3">Receive skincare notes, routine tips and exclusive product announcements.</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to LUMÉA Skincare Notes!');">
+            <div class="newsletter-input-group">
+              <input type="email" placeholder="Enter your email address..." required>
+              <button type="submit" class="btn-lumea btn-lumea-primary btn-lumea-sm">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary-subtle d-flex flex-column flex-md-row justify-content-between align-items-center small text-muted">
+        <p class="mb-2 mb-md-0">&copy; 2026 LUMÉA Skincare Platform. Demo application.</p>
+        <div class="d-flex gap-4">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Formulation Ethics</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

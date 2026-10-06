@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMÉA | Product Details & Formula Breakdown</title>
+  <meta name="description" content="View ingredients, texture specs, and skin barrier benefits for LUMÉA biocompatible skincare formulas.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="lumea-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-logo" aria-label="LUMÉA Skincare">
+        <span class="logo-icon-wrapper">
+          <svg class="logo-drop-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.5C12 2.5 5.5 11 5.5 15.5C5.5 19.09 8.41 22 12 22C15.59 22 18.5 19.09 18.5 15.5C18.5 11 12 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 22V13C12 11.5 13.5 10 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">LUMÉA<span class="logo-dot">.</span></span>
+      </a>
+      <ul class="nav-links-desktop">
+        <li><a href="index.html" class="nav-link-item">Home</a></li>
+        <li><a href="products.html" class="nav-link-item active">Shop</a></li>
+        <li><a href="routine.html" class="nav-link-item">Routine</a></li>
+        <li><a href="ingredients.html" class="nav-link-item">Ingredients</a></li>
+        <li><a href="skin-guide.html" class="nav-link-item">Skin Guide</a></li>
+        <li><a href="about.html" class="nav-link-item">About</a></li>
+      </ul>
+      <div class="nav-actions-right">
+        <button class="btn-lumea-icon trigger-search" aria-label="Search skincare"><i class="bi bi-search"></i></button>
+        <a href="dashboard.html" class="btn-lumea-icon position-relative" aria-label="Favorites">
+          <i class="bi bi-heart"></i>
+          <span id="favorites-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none; font-size: 0.65rem;">0</span>
+        </a>
+        <a href="login.html" class="btn-lumea-icon"><i class="bi bi-person"></i></a>
+        <a href="routine.html" class="btn-lumea btn-lumea-primary btn-lumea-sm">Find Your Routine</a>
+      </div>
+      <button class="mobile-hamburger" id="mobile-menu-toggle" aria-label="Toggle menu">
+        <div class="hamburger-box">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <button class="close-mobile-menu-btn" id="close-mobile-menu" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">Shop</a></li>
+      <li><a href="routine.html">Routine</a></li>
+      <li><a href="ingredients.html">Ingredients</a></li>
+      <li><a href="skin-guide.html">Skin Guide</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="mobile-nav-actions">
+      <a href="routine.html" class="btn-lumea btn-lumea-terracotta w-100 text-center">Find Your Routine</a>
+      <div class="d-flex gap-3 justify-content-center mt-2">
+        <button class="btn-lumea-icon trigger-search" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="dashboard.html" class="btn-lumea-icon" aria-label="Favorites"><i class="bi bi-heart"></i></a>
+        <a href="login.html" class="btn-lumea-icon" aria-label="Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-overlay" id="search-overlay">
+    <button class="close-search-btn" id="close-search">&times;</button>
+    <div class="search-container-inner mt-5">
+      <span class="eyebrow text-center d-block mb-3">Instant Skincare Search</span>
+      <div class="search-input-wrapper">
+        <i class="bi bi-search search-icon-inside"></i>
+        <input type="text" id="global-search-input" class="search-input-field" placeholder="Search serums, ceramides, hydration, SPF...">
+      </div>
+      <div id="search-results-container"></div>
+    </div>
+  </div>
+
+  <main id="product-detail-view" class="pt-5">
+    <!-- PRODUCT DETAIL MAIN CONTAINER -->
+    <section class="hero-section">
+      <div class="container">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb small">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="products.html">Shop Skincare</a></li>
+            <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-product-name">Hydra Veil Serum</li>
+          </ol>
+        </nav>
+
+        <div class="row g-5 align-items-center">
+          <!-- LEFT GALLERY -->
+          <div class="col-lg-6">
+            <div class="img-hover-wrapper rounded-4 overflow-hidden shadow-card mb-3" style="height: 480px;">
+              <img id="detail-main-image" src="assets/images/49.jpg" alt="LUMÉA Product Main High Resolution Image" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <!-- Thumbnails Container -->
+            <div class="d-flex gap-3 justify-content-center" id="detail-thumbnails">
+              <img src="assets/images/49.jpg" alt="Thumb 1" class="img-thumbnail border-dark" style="width: 75px; height: 75px; object-fit: cover; cursor: pointer;">
+              <img src="assets/images/50.jpg" alt="Thumb 2" class="img-thumbnail" style="width: 75px; height: 75px; object-fit: cover; cursor: pointer;">
+              <img src="assets/images/51.jpg" alt="Thumb 3" class="img-thumbnail" style="width: 75px; height: 75px; object-fit: cover; cursor: pointer;">
+              <img src="assets/images/52.jpg" alt="Thumb 4" class="img-thumbnail" style="width: 75px; height: 75px; object-fit: cover; cursor: pointer;">
+            </div>
+          </div>
+
+          <!-- RIGHT PRODUCT INFO -->
+          <div class="col-lg-6">
+            <span class="eyebrow" id="detail-category">Serums / Hydration</span>
+            <h1 class="display-large mb-2" id="detail-title">Hydra Veil Serum</h1>
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="text-warning">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <span class="small text-muted fw-semibold">4.9 / 5.0 (Demo Rating)</span>
+            </div>
+            <div class="h3 font-serif mb-4" id="detail-price">$48.00 USD</div>
+
+            <p class="lead-text mb-4" id="detail-desc">Deeply penetrates epidermal layers to restore moisture reservoir, plumping fine lines and leaving a luminous satin finish without clogging pores.</p>
+
+            <div class="card p-3 bg-warm-beige border-0 mb-4 rounded-3">
+              <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-droplet-fill text-primary fs-3"></i>
+                <div>
+                  <h6 class="font-serif mb-0">Texture Specification</h6>
+                  <small class="text-muted" id="detail-texture">Lightweight fluid gel-serum</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-3 mb-4">
+              <button class="btn-lumea btn-lumea-primary flex-grow-1" id="detail-add-routine-btn">
+                <i class="bi bi-plus-circle me-1"></i> Add to Routine
+              </button>
+              <button class="btn-lumea btn-lumea-outline" id="detail-save-btn">
+                <i class="bi bi-heart me-1"></i> Save Product
+              </button>
+            </div>
+
+            <div class="border-top pt-4">
+              <div class="row g-3 text-center">
+                <div class="col-4">
+                  <i class="bi bi-patch-check text-success fs-4 d-block mb-1"></i>
+                  <small class="fw-semibold font-sans">Biocompatible</small>
+                </div>
+                <div class="col-4">
+                  <i class="bi bi-flower1 text-warning fs-4 d-block mb-1"></i>
+                  <small class="fw-semibold font-sans">100% Vegan</small>
+                </div>
+                <div class="col-4">
+                  <i class="bi bi-shield-heart text-danger fs-4 d-block mb-1"></i>
+                  <small class="fw-semibold font-sans">Derm-Tested</small>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: INGREDIENTS & TEXTURE BREAKDOWN -->
+    <section class="bg-surface">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <span class="eyebrow">Formulation Ingredients</span>
+            <h2 class="heading-1 mb-4">What's Inside The Bottle</h2>
+            <ul class="list-unstyled" id="detail-ingredients">
+              <li class="mb-3 d-flex align-items-center gap-3">
+                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                <div>
+                  <strong>Multi-Weight Hyaluronic Acid (2%)</strong>
+                  <p class="small text-muted mb-0">Attracts moisture to surface layers while deep-penetrating micro-molecules hydrate dermal strata.</p>
+                </div>
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-3">
+                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                <div>
+                  <strong>Niacinamide / Vitamin B3 (3%)</strong>
+                  <p class="small text-muted mb-0">Restores lipid barrier strength and smooths micro-texture.</p>
+                </div>
+              </li>
+              <li class="mb-3 d-flex align-items-center gap-3">
+                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                <div>
+                  <strong>Pro-Vitamin B5 / Panthenol</strong>
+                  <p class="small text-muted mb-0">Soothes inflammation, speeds cell repair, and locks in surface moisture.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="img-hover-wrapper rounded-4 overflow-hidden shadow-card" style="height: 400px;">
+              <img src="assets/images/53.jpg" alt="LUMÉA Product Key Ingredients Botanical Feature">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: TEXTURE MACRO -->
+    <section class="bg-warm-beige">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <span class="eyebrow">Tactile Science</span>
+            <h2 class="heading-1 mb-3">Ultra-Lightweight Absorption</h2>
+            <p class="lead-text mb-4">Designed to instantly melt upon skin contact without leaving a greasy or sticky residue. Perfect under daily sunscreen or overnight barrier balms.</p>
+            <div class="p-3 bg-surface rounded-3 border">
+              <span class="fw-semibold d-block mb-1">How to Apply:</span>
+              <p class="small text-muted mb-0">Dispense 3-4 drops onto clean, slightly damp face and neck. Gently press into skin using upward motions.</p>
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="img-hover-wrapper rounded-4 overflow-hidden shadow-card" style="height: 380px;">
+              <img src="assets/images/54.jpg" alt="LUMÉA Texture Macro Close Up">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="lumea-footer">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+          <a href="index.html" class="brand-logo footer-brand mb-3" aria-label="LUMÉA Skincare Home">
+            <span class="logo-icon-wrapper">
+              <svg class="logo-drop-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.5C12 2.5 5.5 11 5.5 15.5C5.5 19.09 8.41 22 12 22C15.59 22 18.5 19.09 18.5 15.5C18.5 11 12 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 22V13C12 11.5 13.5 10 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="logo-text">LUMÉA<span class="logo-dot">.</span></span>
+          </a>
+          <p class="small text-muted mb-4">Skin, thoughtfully cared for. Ultra-premium skincare engineered around barrier integrity, pure hydration, and clean formulation science.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn-lumea-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn-lumea-icon" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="btn-lumea-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="products.html">Shop Skincare</a></li>
+            <li><a href="routine.html">Routine Builder</a></li>
+            <li><a href="ingredients.html">Ingredients</a></li>
+            <li><a href="skin-guide.html">Skin Guide</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Account</h5>
+          <ul class="footer-links">
+            <li><a href="dashboard.html">My Account</a></li>
+            <li><a href="dashboard.html">Saved Products</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h5 class="footer-title">Join The Ritual</h5>
+          <p class="small text-muted mb-3">Receive skincare notes, routine tips and exclusive product announcements.</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to LUMÉA Skincare Notes!');">
+            <div class="newsletter-input-group">
+              <input type="email" placeholder="Enter your email address..." required>
+              <button type="submit" class="btn-lumea btn-lumea-primary btn-lumea-sm">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary-subtle d-flex flex-column flex-md-row justify-content-between align-items-center small text-muted">
+        <p class="mb-2 mb-md-0">&copy; 2026 LUMÉA Skincare Platform. Demo application.</p>
+        <div class="d-flex gap-4">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Formulation Ethics</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

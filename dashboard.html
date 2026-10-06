@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMÉA | Personal Skincare Dashboard</title>
+  <meta name="description" content="View your customized daily morning and evening skincare routines, saved favorite formulas, and active skin health goals.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="lumea-navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-logo" aria-label="LUMÉA Skincare">
+        <span class="logo-icon-wrapper">
+          <svg class="logo-drop-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.5C12 2.5 5.5 11 5.5 15.5C5.5 19.09 8.41 22 12 22C15.59 22 18.5 19.09 18.5 15.5C18.5 11 12 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 22V13C12 11.5 13.5 10 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">LUMÉA<span class="logo-dot">.</span></span>
+      </a>
+      <ul class="nav-links-desktop">
+        <li><a href="index.html" class="nav-link-item">Home</a></li>
+        <li><a href="products.html" class="nav-link-item">Shop</a></li>
+        <li><a href="routine.html" class="nav-link-item">Routine</a></li>
+        <li><a href="ingredients.html" class="nav-link-item">Ingredients</a></li>
+        <li><a href="skin-guide.html" class="nav-link-item">Skin Guide</a></li>
+        <li><a href="about.html" class="nav-link-item">About</a></li>
+      </ul>
+      <div class="nav-actions-right">
+        <button class="btn-lumea-icon trigger-search" aria-label="Search skincare"><i class="bi bi-search"></i></button>
+        <a href="dashboard.html" class="btn-lumea-icon position-relative active" aria-label="Favorites">
+          <i class="bi bi-heart"></i>
+          <span id="favorites-count-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none; font-size: 0.65rem;">0</span>
+        </a>
+        <a href="login.html" class="btn-lumea-icon"><i class="bi bi-person"></i></a>
+        <a href="routine.html" class="btn-lumea btn-lumea-primary btn-lumea-sm">Find Your Routine</a>
+      </div>
+      <button class="mobile-hamburger" id="mobile-menu-toggle" aria-label="Toggle menu">
+        <div class="hamburger-box">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <button class="close-mobile-menu-btn" id="close-mobile-menu" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Shop</a></li>
+      <li><a href="routine.html">Routine</a></li>
+      <li><a href="ingredients.html">Ingredients</a></li>
+      <li><a href="skin-guide.html">Skin Guide</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="mobile-nav-actions">
+      <a href="routine.html" class="btn-lumea btn-lumea-terracotta w-100 text-center">Find Your Routine</a>
+      <div class="d-flex gap-3 justify-content-center mt-2">
+        <button class="btn-lumea-icon trigger-search" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="dashboard.html" class="btn-lumea-icon" aria-label="Favorites"><i class="bi bi-heart"></i></a>
+        <a href="login.html" class="btn-lumea-icon" aria-label="Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-overlay" id="search-overlay">
+    <button class="close-search-btn" id="close-search">&times;</button>
+    <div class="search-container-inner mt-5">
+      <span class="eyebrow text-center d-block mb-3">Instant Skincare Search</span>
+      <div class="search-input-wrapper">
+        <i class="bi bi-search search-icon-inside"></i>
+        <input type="text" id="global-search-input" class="search-input-field" placeholder="Search serums, ceramides, hydration, SPF...">
+      </div>
+      <div id="search-results-container"></div>
+    </div>
+  </div>
+
+  <main id="dashboard-view" class="pt-5 mt-4">
+    <!-- DASHBOARD WELCOME HERO -->
+    <section class="hero-section py-4">
+      <div class="container">
+        <div class="card p-3 p-md-5 border-0 rounded-4 shadow-card bg-surface overflow-hidden">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-8">
+              <span class="eyebrow"><i class="bi bi-person-check me-1"></i> Skincare Portal</span>
+              <h1 class="display-large mb-2">Welcome Back, <span id="dash-user-name" class="text-terracotta">Sophia</span>.</h1>
+              <p class="lead-text mb-4">Track your daily morning and evening routines, saved formulas, and barrier progress goals.</p>
+              
+              <div class="d-flex flex-wrap gap-3">
+                <a href="routine.html" class="btn-lumea btn-lumea-primary btn-lumea-sm">Update Routine <i class="bi bi-magic ms-1"></i></a>
+                <button id="dash-logout-btn" class="btn-lumea btn-lumea-outline btn-lumea-sm">Sign Out <i class="bi bi-box-arrow-right ms-1"></i></button>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="img-hover-wrapper rounded-3" style="height: 180px;">
+                <img src="assets/images/33.jpg" alt="Dashboard User Profile Visual">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <section class="bg-surface py-4">
+      <div class="container">
+        
+        <!-- ROW 1: ROUTINE PROGRESS & GOALS -->
+        <div class="row g-4 mb-5">
+          <!-- ROUTINE PROGRESS -->
+          <div class="col-lg-6">
+            <div class="card p-4 h-100 border-0 shadow-subtle rounded-4 bg-warm-beige">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="heading-3 mb-0">Daily Routine Progress</h3>
+                <span class="badge-lumea badge-terracotta">Today's Completion</span>
+              </div>
+              
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center small mb-1">
+                  <span class="fw-semibold"><i class="bi bi-sun text-warning me-1"></i> Morning Routine</span>
+                  <span>75% Complete</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                  <div class="progress-bar bg-warning" style="width: 75%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="d-flex justify-content-between align-items-center small mb-1">
+                  <span class="fw-semibold"><i class="bi bi-moon-stars text-primary me-1"></i> Evening Routine</span>
+                  <span>50% Complete</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                  <div class="progress-bar bg-primary" style="width: 50%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SKIN GOALS -->
+          <div class="col-lg-6">
+            <div class="card p-4 h-100 border-0 shadow-subtle rounded-4 bg-warm-beige">
+              <h3 class="heading-3 mb-3">Targeted Skin Goals</h3>
+              
+              <div class="row g-3">
+                <div class="col-4 text-center">
+                  <img src="assets/images/20.jpg" alt="Hydration Goal Visual" class="rounded-circle mb-2 mx-auto" style="width: 55px; height: 55px; object-fit: cover;">
+                  <h6 class="font-serif small mb-1">Hydration</h6>
+                  <span class="badge-lumea badge-sage">85% Optimal</span>
+                </div>
+
+                <div class="col-4 text-center">
+                  <img src="assets/images/21.jpg" alt="Barrier Care Goal Visual" class="rounded-circle mb-2 mx-auto" style="width: 55px; height: 55px; object-fit: cover;">
+                  <h6 class="font-serif small mb-1">Barrier Shield</h6>
+                  <span class="badge-lumea badge-terracotta">90% Restored</span>
+                </div>
+
+                <div class="col-4 text-center">
+                  <img src="assets/images/22.jpg" alt="UV Defense Goal Visual" class="rounded-circle mb-2 mx-auto" style="width: 55px; height: 55px; object-fit: cover;">
+                  <h6 class="font-serif small mb-1">SPF Protection</h6>
+                  <span class="badge-lumea badge-beige">100% Shielded</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW 2: SAVED FAVORITE PRODUCTS (Loaded via JS) -->
+        <div class="mb-5">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="heading-2 mb-0">Saved Favorite Products</h3>
+            <a href="products.html" class="link-arrow">Browse Shop <i class="bi bi-arrow-right"></i></a>
+          </div>
+
+          <div class="row g-4" id="dash-favorites-grid">
+            <!-- Populated dynamically via main.js from localStorage -->
+          </div>
+        </div>
+
+        <!-- ROW 3: RECENTLY VIEWED FORMULAS -->
+        <div>
+          <h3 class="heading-2 mb-4">Recommended For Your Routine</h3>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="lumea-card p-3 d-flex gap-3 align-items-center">
+                <img src="assets/images/8.jpg" alt="Hydra Veil Serum" style="width: 75px; height: 75px; border-radius: 8px; object-fit: cover;">
+                <div>
+                  <span class="badge-lumea badge-terracotta mb-1">Serum</span>
+                  <h6 class="font-serif mb-1"><a href="product-detail.html?id=prod-01">Hydra Veil Serum</a></h6>
+                  <small class="text-muted">$48.00 USD</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="lumea-card p-3 d-flex gap-3 align-items-center">
+                <img src="assets/images/9.jpg" alt="C-Glow Concentrate" style="width: 75px; height: 75px; border-radius: 8px; object-fit: cover;">
+                <div>
+                  <span class="badge-lumea badge-sage mb-1">Brightening</span>
+                  <h6 class="font-serif mb-1"><a href="product-detail.html?id=prod-02">C-Glow Concentrate</a></h6>
+                  <small class="text-muted">$54.00 USD</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="lumea-card p-3 d-flex gap-3 align-items-center">
+                <img src="assets/images/10.jpg" alt="Barrier Cream" style="width: 75px; height: 75px; border-radius: 8px; object-fit: cover;">
+                <div>
+                  <span class="badge-lumea badge-beige mb-1">Moisturizer</span>
+                  <h6 class="font-serif mb-1"><a href="product-detail.html?id=prod-03">Barrier Cream</a></h6>
+                  <small class="text-muted">$52.00 USD</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="lumea-footer">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+          <a href="index.html" class="brand-logo footer-brand mb-3" aria-label="LUMÉA Skincare Home">
+            <span class="logo-icon-wrapper">
+              <svg class="logo-drop-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.5C12 2.5 5.5 11 5.5 15.5C5.5 19.09 8.41 22 12 22C15.59 22 18.5 19.09 18.5 15.5C18.5 11 12 2.5 12 2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 22V13C12 11.5 13.5 10 15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="logo-text">LUMÉA<span class="logo-dot">.</span></span>
+          </a>
+          <p class="small text-muted mb-4">Skin, thoughtfully cared for. Ultra-premium skincare engineered around barrier integrity, pure hydration, and clean formulation science.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn-lumea-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn-lumea-icon" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="btn-lumea-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="products.html">Shop Skincare</a></li>
+            <li><a href="routine.html">Routine Builder</a></li>
+            <li><a href="ingredients.html">Ingredients</a></li>
+            <li><a href="skin-guide.html">Skin Guide</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5 class="footer-title">Account</h5>
+          <ul class="footer-links">
+            <li><a href="dashboard.html">My Account</a></li>
+            <li><a href="dashboard.html">Saved Products</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h5 class="footer-title">Join The Ritual</h5>
+          <p class="small text-muted mb-3">Receive skincare notes, routine tips and exclusive product announcements.</p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed to LUMÉA Skincare Notes!');">
+            <div class="newsletter-input-group">
+              <input type="email" placeholder="Enter your email address..." required>
+              <button type="submit" class="btn-lumea btn-lumea-primary btn-lumea-sm">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary-subtle d-flex flex-column flex-md-row justify-content-between align-items-center small text-muted">
+        <p class="mb-2 mb-md-0">&copy; 2026 LUMÉA Skincare Platform. Demo application.</p>
+        <div class="d-flex gap-4">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Formulation Ethics</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
