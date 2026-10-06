@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initFullHeadlineReveal();
   initHeroParallaxTilt();
+  initPasswordToggle();
 
   // Page Specific Inits
   if (document.getElementById('products-grid')) initProductsPage();
@@ -26,6 +27,26 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('dashboard-view')) initDashboardPage();
   if (document.getElementById('contact-form')) initContactForm();
 });
+
+function initPasswordToggle() {
+  const toggleButtons = document.querySelectorAll('.btn-toggle-password');
+  toggleButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const wrapper = btn.closest('.password-input-group');
+      if (!wrapper) return;
+      const input = wrapper.querySelector('input');
+      const icon = btn.querySelector('i');
+      if (input) {
+        const isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+        if (icon) {
+          icon.className = isPassword ? 'bi bi-eye' : 'bi bi-eye-slash';
+        }
+      }
+    });
+  });
+}
 
 /* ==========================================================================
    1. DEMO PRODUCT DATASET (Uses Unique Skincare Images from /assets/images/)

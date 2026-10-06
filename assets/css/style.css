@@ -559,9 +559,18 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   STRICT MOBILE NAVBAR RESPONSIVENESS (< 992px)
+   STRICT TABLET & MOBILE NAVBAR RESPONSIVENESS (<= 1024px)
    -------------------------------------------------------------------------- */
-@media (max-width: 991.98px) {
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav-links-desktop {
+    gap: 1.25rem;
+  }
+  .nav-actions-right {
+    gap: 0.65rem;
+  }
+}
+
+@media (max-width: 1024px) {
   .nav-links-desktop,
   .nav-actions-right {
     display: none !important;
@@ -575,6 +584,8 @@ button, input, select, textarea {
    Cards, Badges & Image Containers (Elevated Multi-Layer Hover System)
    -------------------------------------------------------------------------- */
 .lumea-card {
+  display: flex;
+  flex-direction: column;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -584,6 +595,16 @@ button, input, select, textarea {
               box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.45s ease,
               background-color 0.45s ease;
+}
+
+.lumea-card > .d-flex.flex-column,
+.skin-guide-card > .d-flex.flex-column {
+  flex: 1 1 auto;
+}
+
+.lumea-card .link-arrow,
+.skin-guide-card .link-arrow {
+  margin-top: auto;
 }
 
 .lumea-card::before {
@@ -1276,6 +1297,105 @@ section {
 .form-control-lumea:focus {
   border-color: var(--warm-terracotta);
   box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Password Input Group & Eye Toggle Symbol */
+.password-input-group {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-group .form-control-lumea {
+  padding-right: 2.75rem;
+}
+
+.btn-toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+  z-index: 5;
+}
+
+.btn-toggle-password:hover {
+  color: var(--warm-terracotta);
+}
+
+/* Social Buttons for Authentication Pages */
+.social-auth-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-social-auth {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-social-auth:hover {
+  background-color: var(--warm-beige);
+  border-color: var(--warm-terracotta);
+  color: var(--warm-terracotta);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(38, 42, 38, 0.08);
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.25rem 0;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.auth-divider::before {
+  margin-right: 0.75rem;
+}
+
+.auth-divider::after {
+  margin-left: 0.75rem;
+}
+
+/* Auth Page Standalone Layout */
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--bg-primary);
 }
 
 /* Keyframes & Scroll Animations */
